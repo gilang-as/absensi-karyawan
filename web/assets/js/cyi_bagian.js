@@ -59,24 +59,16 @@ $( document ).ready(function() {
     /* tambah user */
     $(".crud-submit").click(function(e){
         e.preventDefault();
-        var id = $("#tambahkaryawan").find("input[name='id']").val();
-        var nama = $("#tambahkaryawan").find("input[name='nama']").val();
-        var jekel = $("#tambahkaryawan").find("input[name='jekel']").val();
-        var sandi = $("#tambahkaryawan").find("input[name='sandi']").val();
-        var lv = $("#tambahkaryawan").find("input[name='lv']").val();
+        var nama = $("#tambahbagian").find("input[name='nama']").val();
     
-        if(id != '' && nama != '' && jekel != '' && sandi != '' && lv != ''){
+        if(nama != ''){
             $.ajax({
                 dataType: 'json',
                 type:'POST',
-                url: url + 'api.php?tipe=tambahkaryawan',
-                data:{id:id, nama:nama, jekel:jekel, sandi:sandi, lv:lv}
+                url: url + 'api.php?tipe=tambahbagian',
+                data:{nama:nama}
             }).done(function(data){
-                $("#tambahkaryawan").find("input[name='id']").val('');
-                $("#tambahkaryawan").find("input[name='nama']").val('');
-                $("#tambahkaryawan").find("input[name='jekel']").val('');
-                $("#tambahkaryawan").find("input[name='sandi']").val('');
-                $("#tambahkaryawan").find("input[name='lv']").val('');
+                $("#tambahbagian").find("input[name='nama']").val('');
                 getPageData();
                 $(".modal").modal('hide');
             });
@@ -92,7 +84,7 @@ $( document ).ready(function() {
         $.ajax({
             dataType: 'json',
             type:'POST',
-            url: url + 'api.php?tipe=hapuskaryawan',
+            url: url + 'api.php?tipe=hapusbagian',
             data:{id:id}
         }).done(function(data){
             c_obj.remove();
@@ -105,42 +97,24 @@ $( document ).ready(function() {
     $("body").on("click",".ubahbagian",function(){
     
         var id = $(this).parent("td").data('id');
-        var nama = $(this).parent("td").prev("td").prev("td").prev("td").text();
-        var jekel = $(this).parent("td").prev("td").prev("td").text();
-        var lv = $(this).parent("td").prev("td").text();
-        if(jekel=='Laki-laki'){
-            var jekel=0;
-        }else{
-            var jekel=1;
-        }
-        if(lv=='Karyawan'){
-            var lv=0;
-        }else{
-            var lv=1;
-        }
-        $("#ubahkaryawan").find("input[name='id']").val(id);
-        $("#ubahkaryawan").find("input[name='nama']").val(nama);
-        $("#ubahkaryawan").find("input[name='jekel']").val(jekel);
-        $("#ubahkaryawan").find("input[name='sandi']").val(lv);
-        $("#ubahkaryawan").find("input[name='lv']").val(lv);
+        var nama = $(this).parent("td").prev("td").text();
+        $("#ubahbagian").find("input[name='id']").val(id);
+        $("#ubahbagian").find("input[name='nama']").val(nama);
     
     });
     /* Update user */
     $(".ubahbagian").click(function(e){
     
         e.preventDefault();
-        var id = $("#tambahkaryawan").find("input[name='id']").val();
-        var nama = $("#tambahkaryawan").find("input[name='nama']").val();
-        var jekel = $("#tambahkaryawan").find("input[name='jekel']").val();
-        var sandi = $("#tambahkaryawan").find("input[name='sandi']").val();
-        var lv = $("#tambahkaryawan").find("input[name='lv']").val();
+        var id = $("#ubahbagian").find("input[name='id']").val();
+        var nama = $("#ubahbagian").find("input[name='nama']").val();
     
-        if(id != '' && nama != '' && jekel != '' && sandi != '' && lv != ''){
+        if(id != '' && nama != ''){
             $.ajax({
                 dataType: 'json',
                 type:'POST',
-                url: url + 'api.php?tipe=ubahkaryawan',
-                data:{id:id, nama:nama, jekel:jekel, sandi:sandi, lv:lv}
+                url: url + 'api.php?tipe=ubahbagian',
+                data:{id:id, nama:nama}
             }).done(function(data){
                 getPageData();
                 $(".modal").modal('hide');

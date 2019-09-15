@@ -42,7 +42,7 @@
                                         </div>
                                         <div class="card-body collapse show">
                                             <div class="card-block card-dashboard">
-                                                <button type="button" class="btn btn-outline-success btn-block btn-lg" data-toggle="modal" data-target="#tambahkaryawan">
+                                                <button type="button" class="btn btn-outline-success btn-block btn-lg" data-toggle="modal" data-target="#tambahbagian">
                                                     Tambah Bagian
                                                 </button>
                                                 <table class="table table-striped table-bordered dom-jQuery-events">
@@ -99,6 +99,7 @@
                                         </div>
                                         <form data-toggle="validator" method="put">
                                             <div class="modal-body">
+                                                    <input type="hidden" name="id" class="form-control" />
                                                 <div class="form-group">
                                                     <label class="control-label" for="nama">Nama</label>
                                                     <input type="text" name="nama" class="form-control" required />

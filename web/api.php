@@ -74,6 +74,43 @@ if($_GET['tipe']=='jupukkaryawan'){
     $sql = "DELETE FROM cyi_waktu WHERE id = '" . $_POST['id'] . "'";
     $result = $connect->query($sql);
     echo json_encode([$_POST['id']], JSON_PRETTY_PRINT);
+}elseif($_GET['tipe']=='jupukbagian'){
+    $num_rec = 10;
+    if (isset($_GET['page'])) {
+        $page = $_GET['page'];
+    } else {
+        $page = 1;
+    };
+    $start_from = ($page - 1) * $num_rec;
+    $sqlTotal = "SELECT * FROM cyi_bagian";
+    $sql = "SELECT * FROM cyi_bagian Order By id desc LIMIT $start_from, $num_rec";
+    $result = $connect->query($sql);
+    while ($row = $result->fetch_assoc()) {
+        $json[] = $row;
+    }
+    $data['data'] = $json;
+    $result = mysqli_query($connect, $sqlTotal);
+    $data['total'] = mysqli_num_rows($result);
+    echo json_encode($data, JSON_PRETTY_PRINT);
+}elseif($_GET['tipe']=='tambahbagian'){
+    $sql = "INSERT INTO cyi_bagian (nama) VALUES ('" . $_POST['nama'] . "')";
+    $result = $connect->query($sql);
+    $sql = "SELECT * FROM cyi_bagian Order by id desc LIMIT 1";
+    $result = $connect->query($sql);
+    $data = $result->fetch_assoc();
+    echo json_encode($data, JSON_PRETTY_PRINT);
+}elseif($_GET['tipe']=='ubahbagian'){
+    $sql = "UPDATE cyi_bagian SET ,nama = '" . $_POST['nama'] . "' WHERE id = '" . $_POST['id'] . "'";
+    $result = $connect->query($sql);
+    $sql = "SELECT * FROM cyi_bagian WHERE id = '" . $_POST['id'] . "'";
+    $result = $connect->query($sql);
+    $data = $result->fetch_assoc();
+    echo json_encode($data, JSON_PRETTY_PRINT);
+}elseif($_GET['tipe']=='hapusbagian'){
+    $sql = "DELETE FROM cyi_bagian WHERE id = '" . $_POST['id'] . "'";
+    $result = $connect->query($sql);
+    echo json_encode([$_POST['id']], JSON_PRETTY_PRINT);
+
 }else{
     echo'Gagal';
 }
