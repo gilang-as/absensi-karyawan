@@ -1,0 +1,9 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# **** INDEX ****
+RewriteRule ^$ index.php [QSA]
+RewriteRule ^([A-Za-z_-]+)$ index.php?halaman=$1 [QSA]
