@@ -10,6 +10,8 @@ if($_GET["halaman"]=="masuk"){
     include("template/cyi_waktu-tmp.php");
 }elseif($_GET["halaman"]=="bagian"){
     include("template/cyi_bagian-tmp.php");
+}elseif($_GET["halaman"]=="absen"){
+    include("template/cyi_qrcode-tmp.php");
 }else{
     header('location: '.$domain.'dashboard');
 }

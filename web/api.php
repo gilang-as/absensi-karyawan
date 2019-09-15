@@ -110,7 +110,46 @@ if($_GET['tipe']=='jupukkaryawan'){
     $sql = "DELETE FROM cyi_bagian WHERE id = '" . $_POST['id'] . "'";
     $result = $connect->query($sql);
     echo json_encode([$_POST['id']], JSON_PRETTY_PRINT);
+}elseif($_GET['tipe']=='mlebu'){
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        if($_POST['nis']==1 && $_POST['pass']==1){
+            echo '{"status":"true","pesan":"Login Berhasil","nis":"1010","nama":"Gilang"}';
+        }else{
+            echo '{"status":"false","pesan":"Maaf, Username atau Kata Sandi Anda salah","nis":null,"nama":null}';
+        }
+    }else{
+        echo $error;
+    }
+}elseif($_GET['tipe']=='absen'){
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+        if($_POST['name']=="Nama" || $_POST['nis']=="NIS"){
+            echo 'Data mohon disi terlebih dahulu.';
+        }else{
+            $data=array(
+                "id_presensi"=>$_POST["id_presensi"],
+                "nis"=>$_POST["nis"]
+            );
 
+            print_r($data);
+        }
+    }else{
+        echo $error;
+    }
+}elseif($_GET['tipe']=='daftarbagian'){
+    $sql = "SELECT * FROM cyi_bagian WHERE nama LIKE '%".$_GET['search']."%' ORDER BY nama ASC";
+    $result = $connect->query($sql);
+    if ($result->num_rows > 0) {
+        $list = array();
+        $key=0;
+        while($row = $result->fetch_assoc()) {
+            $list[$key]['id'] = $row['id'];
+            $list[$key]['text'] = $row['nama']; 
+        $key++;
+        }
+        echo json_encode($list, JSON_PRETTY_PRINT);
+    } else {
+        echo "hasil kosong";
+    }
 }else{
     echo'Gagal';
 }

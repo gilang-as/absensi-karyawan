@@ -48,6 +48,7 @@ $( document ).ready(function() {
               rows = rows + '<td>'+value.id+'</td>';
               rows = rows + '<td>'+value.nama+'</td>';
               rows = rows + '<td data-id="'+value.id+'">';
+            rows = rows + '<a class="btn btn-success btn-sm" href="'+url+'absen?bagian='+value.id+'"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> QR Code</a> ';
             rows = rows + '<button data-toggle="modal" data-target="#ubahbagian" class="btn btn-primary btn-sm ubahbagian"> <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit</button> ';
             rows = rows + '<button class="btn btn-danger btn-sm hapusbagian"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Hapus</button>';
             rows = rows + '</td>';

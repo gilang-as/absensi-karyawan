@@ -22,6 +22,7 @@
     <link rel="stylesheet" type="text/css" href="<?= $domain;?>assets/vendors/prism/prism.min.css">
     <link rel="stylesheet" type="text/css" href="<?= $domain;?>assets/vendors/datatables/datatables.min.css">
     <link rel="stylesheet" type="text/css" href="<?= $domain;?>assets/css/app.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/css/select2.min.css" rel="stylesheet" />
 </head>
 
 <body data-col="2-columns" class=" 2-columns ">
@@ -96,10 +97,19 @@
                                                     <input type="text" name="sandi" class="form-control" required />
                                                 </div>
                                                 <div class="form-group">
+                                                    <label class="control-label" for="bagian">Bagian</label>
+                                                    <select name="bagian" id="bagian" class="form-control select2" required>
+                                                    <option value="0">Admin</option>
+                                                        <option value="1">Manager</option>
+                                                        <option value="2">Karyawan</option>
+                                                    </select>
+                                                </div>
+                                                <div class="form-group">
                                                     <label class="control-label" for="lv">Status</label>
                                                     <select name="lv" class="form-control" required>
                                                         <option value="0">Admin</option>
-                                                        <option value="1">Karyawan</option>
+                                                        <option value="1">Manager</option>
+                                                        <option value="2">Karyawan</option>
                                                     </select>
                                                 </div>
                                             </div>
@@ -257,6 +267,26 @@
     <script src="<?= $domain;?>assets/js/components-modal.min.js"></script>
     <script src="<?= $domain;?>assets/js/cyi_karyawan.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/twbs-pagination/1.3.1/jquery.twbsPagination.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.10/js/select2.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $('.select2').select2({
+  ajax: {
+    url: 'https://api.github.com/orgs/select2/repos',
+    data: function (params) {
+      var query = {
+        search: params.term,
+        type: 'public'
+      }
+
+      // Query parameters will be ?search=[term]&type=public
+      return query;
+    }
+  }
+});
+    });
+
+</script>
 </body>
 
 </html>
