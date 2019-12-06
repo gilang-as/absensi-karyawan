@@ -20,7 +20,7 @@ if($_GET['tipe']=='jupukkaryawan'){
     $data['total'] = mysqli_num_rows($result);
     echo json_encode($data, JSON_PRETTY_PRINT);
 }elseif($_GET['tipe']=='tambahkaryawan'){
-    $sql = "INSERT INTO cyi_karyawan (id,nama,jekel,sandi,lv) VALUES ('" . $_POST['id'] . "','" . $_POST['nama'] . "','" . $_POST['jekel'] . "','" . $_POST['sandi'] . "','" . $_POST['lv'] . "')";
+    $sql = "INSERT INTO cyi_karyawan (id,nama,jekel,sandi,lv,bagian) VALUES ('" . $_POST['id'] . "','" . $_POST['nama'] . "','" . $_POST['jekel'] . "','" . $_POST['sandi'] . "','" . $_POST['lv'] . "','" . $_POST['bagian'] . "')";
     $result = $connect->query($sql);
     $sql = "SELECT * FROM cyi_karyawan Order by id desc LIMIT 1";
     $result = $connect->query($sql);

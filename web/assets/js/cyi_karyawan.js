@@ -49,10 +49,12 @@ $( document ).ready(function() {
             }else{
                 var jekel='Perempuan';
             }
-            if(value.lv==0){
-                var lv='Karyawan';
-            }else{
+            if(value.lv==1){
                 var lv='Admin';
+            }else if(value.lv==2){
+                var lv='Manager';
+            }else{
+                var lv='Karyawan';
             }
               rows = rows + '<tr>';
               rows = rows + '<td>'+value.id+'</td>';
@@ -76,19 +78,21 @@ $( document ).ready(function() {
         var nama = $("#tambahkaryawan").find("input[name='nama']").val();
         var jekel = $("#tambahkaryawan").find("input[name='jekel']").val();
         var sandi = $("#tambahkaryawan").find("input[name='sandi']").val();
+        var bagian = $("#tambahkaryawan").find("input[name='bagian']").val();
         var lv = $("#tambahkaryawan").find("input[name='lv']").val();
     
-        if(id != '' && nama != '' && jekel != '' && sandi != '' && lv != ''){
+        if(id != '' && nama != '' && jekel != '' && sandi != '' && bagian != '' && lv != ''){
             $.ajax({
                 dataType: 'json',
                 type:'POST',
                 url: url + 'api.php?tipe=tambahkaryawan',
-                data:{id:id, nama:nama, jekel:jekel, sandi:sandi, lv:lv}
+                data:{id:id, nama:nama, jekel:jekel, sandi:sandi, bagian:bagian, lv:lv}
             }).done(function(data){
                 $("#tambahkaryawan").find("input[name='id']").val('');
                 $("#tambahkaryawan").find("input[name='nama']").val('');
                 $("#tambahkaryawan").find("input[name='jekel']").val('');
                 $("#tambahkaryawan").find("input[name='sandi']").val('');
+                $("#tambahkaryawan").find("input[name='bagian']").val('');
                 $("#tambahkaryawan").find("input[name='lv']").val('');
                 getPageData();
                 $(".modal").modal('hide');
