@@ -7,7 +7,7 @@
     <meta name="description" content="Convex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Login Page - Convex bootstrap 4 admin dashboard template</title>
+    <title>QR Code - <?= $cyi["nama_app"] ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="<?= $domain;?>assets/img/ico/favicon.ico">
     <link rel="shortcut icon" type="image/png" href="<?= $domain;?>assets/img/ico/favicon-32.png">
     <meta name="apple-mobile-web-app-capable" content="yes">

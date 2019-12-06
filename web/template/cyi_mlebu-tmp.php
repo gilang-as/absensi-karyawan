@@ -4,10 +4,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description" content="Convex admin is super flexible, powerful, clean &amp; modern responsive bootstrap 4 admin template with unlimited possibilities.">
-    <meta name="keywords" content="admin template, Convex admin template, dashboard template, flat admin template, responsive admin template, web app">
-    <meta name="author" content="PIXINVENT">
-    <title>Login Page - Convex bootstrap 4 admin dashboard template</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="Cyine ID">
+    <title>Masuk - <?= $cyi["nama_app"] ?></title>
     <link rel="shortcut icon" type="image/x-icon" href="<?= $domain;?>assets/img/ico/favicon.ico">
     <link rel="shortcut icon" type="image/png" href="<?= $domain;?>assets/img/ico/favicon-32.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
